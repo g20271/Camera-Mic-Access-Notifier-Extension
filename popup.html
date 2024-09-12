@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Camera/Mic Access Notifier</title>
+    <style>
+        body {
+            width: 300px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Camera/Mic Access Notifier Settings</h1>
+    <h2>System Notification</h2>
+    <input type="checkbox" id="notificationsToggle">
+    <label for="notificationsToggle">Enabled</label>
+    <h2>Alart Sound</h2>
+    <input type="checkbox" id="soundToggle">
+    <label for="soundToggle">Enabled</label>
+
+    <h1>Camera/Mic Access History</h1>
+    <ul id="accessList">
+    </ul>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

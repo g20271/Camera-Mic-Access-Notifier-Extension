@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カメラ画像の自動更新</title>
+    <style>
+        video, canvas {
+            width: 640px;
+            height: 480px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>カメラ画像の自動更新</h1>
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        // カメラ映像を取得
+        async function setupCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error('カメラへのアクセスに失敗しました: ', error);
+            }
+        }
+
+        // 定期的にカメラ画像をキャプチャ
+        function startCapture() {
+            const videoElement = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            setInterval(() => {
+                ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            }, 1000); // 1秒ごとに更新
+        }
+
+        // ページロード時にカメラをセットアップし、キャプチャを開始
+        window.onload = async function() {
+            await setupCamera();
+            startCapture();
+        };
+    </script>
+
+</body>
+</html>
