@@ -3,6 +3,9 @@
     "name": "Camera/Mic Access Notifier",
     "version": "1.0",
     "description": "Detects when a tab tries to access the webcam or microphone.",
+    "icons": {
+        "500": "icon.png"
+    },
     "permissions": [
       "activeTab",
       "scripting",
